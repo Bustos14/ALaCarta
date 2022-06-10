@@ -1,0 +1,21 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-title>Introduzca sus datos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="myRestForm">
+    <ion-label>Nombre</ion-label>
+    <ion-item fill="solid" class="ion-margin-bottom" >
+      <ion-input formControlName="name" placeholder="{{datosPerfil.displayName}}"></ion-input>
+    </ion-item>
+    <ion-label>Teléfono</ion-label>
+    <ion-item fill="solid" class="ion-margin-bottom">
+      <ion-input type="number" formControlName="phone" placeholder="{{datosPerfil.phone}}"></ion-input>
+    </ion-item>
+    <ion-button color="primary" expand="full" (click)="updateUserData()">Guardar</ion-button>
+    <ion-button (click)="closeModal()" color="secondary" expand="full">Cancelar</ion-button>
+  </form>
+
+</ion-content>

@@ -1,0 +1,50 @@
+<ion-header>
+    <ion-toolbar color="light">
+        <ion-title>
+            <ion-text class="goodfont" style="font-weight:bold;" *ngIf="user?.email;">
+                <ion-icon name="person-circle-outline"></ion-icon>
+                {{user.email}}</ion-text>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="form">
+        <div class="meta">
+            <div class="photo">
+                <ion-avatar class="avatarProfile">
+                    <img (click)="changeImageProfile(user)" *ngIf="user?.userImg; else placheolder_avatar" [src]="user.userImg"/>
+                </ion-avatar>
+            </div>
+            <ng-template #placheolder_avatar>
+                <div class="fallback" (click)="changeImageProfile(user)">
+                    <h5>¡Añade una foto!</h5>
+                </div>
+            </ng-template>
+        </div>
+        <div class="data">
+            <ion-text class="goodfont" style="font-weight:bold; font-size: 20px" *ngIf="user?.displayName;">
+                <ion-icon name="person-circle-outline"></ion-icon>
+                {{user.displayName}}</ion-text>
+            <br>
+            <br>
+            <ion-text class="goodfont" style="font-weight:bold; font-size: 15px" *ngIf="user?.phone;">
+                <ion-icon name="call-outline"></ion-icon>
+                {{user.phone}}</ion-text>
+        </div>
+        <div>
+        </div>
+        <br><br>
+        <br>
+        <ion-list>
+            <ion-item (click)="openEditModal(user)">
+                <ion-icon name="create-outline" slot="start"></ion-icon>
+                Editar perfil
+            </ion-item>
+            <ion-item (click)="endSession()">
+                <ion-icon color="danger" slot="start" name="log-out"></ion-icon>
+                Cerrar sesión
+            </ion-item>
+        </ion-list>
+    </div>
+</ion-content>

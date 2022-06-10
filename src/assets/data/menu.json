@@ -1,0 +1,18 @@
+[ {
+  "icon": "home",
+  "name": "Inicio",
+  "redicectTo": "/register-admin"
+},{
+  "icon": "ticket-outline",
+  "name": "Pedidos",
+  "redicectTo": "/admin-pedidos"
+},{
+  "icon": "person-circle-outline",
+  "name": "Perfil",
+  "redicectTo": "/admin-profile"
+},{
+  "icon": "lock-closed-outline",
+  "name": "Cerrar sesión",
+  "redicectTo": "''"
+}
+]

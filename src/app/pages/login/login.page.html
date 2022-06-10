@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>¡Inicia sesión!</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" color="primary">
+  <div class="iconStart">
+    <img src="./assets/icon/logo%20app%20EDITADO.png">
+  </div>
+  <form [formGroup]="credentials">
+    <ion-item fill="solid" class="ion-margin-bottom">
+      <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+      <ion-note slot="error" *ngIf="(email.dirty || email.touched) && email.errors">Formato incorrecto</ion-note>
+      <ion-icon name="shield-checkmark" *ngIf="email.valid"></ion-icon>
+    </ion-item>
+    <ion-item fill="solid" class="ion-margin-bottom">
+      <ion-input type="password" placeholder="Password" formControlName="password" ></ion-input>
+      <ion-note slot="error" *ngIf="(password.dirty || password.touched) && password.errors">Su contraseña necesita al menos 8 caracteres</ion-note>
+      <ion-icon name="shield-checkmark" *ngIf="password.valid"></ion-icon>
+    </ion-item>
+    <ion-button style="border: solid 1px" type="submit" expand="block" [disabled]="!credentials.valid" (click)="login()">Iniciar sesion</ion-button>
+    <ion-button style="border: solid 1px" type="button" expand="block" color="secondary" (click)="showActionSheet()">Registrarse</ion-button>
+  </form>
+</ion-content>

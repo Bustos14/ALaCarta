@@ -1,0 +1,69 @@
+
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-button fill="solid" shape="round" color="light" (click)="back()" >
+        <ion-icon slot="icon-only" name="arrow-back" color="tertiary"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ restaurant?.nameRestaurant }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" scrollEvents="true">
+  <div #img class="header-image" [style.background-image]="'url(' + restaurant?.img + ')'">
+  </div>
+  <div *ngIf="restaurant">
+    <ion-row>
+      <ion-col size="12" class="light-bg ion-padding-start">
+      </ion-col>
+      <ion-col size="12" class="light-bg ion-padding-start">
+        <ion-icon name="location-outline" color="medium"></ion-icon>
+        <ion-text>
+          {{restaurant.street+ ', ' + restaurant.codPostal +', '+ restaurant.city}}
+        </ion-text>
+      </ion-col>
+      <ion-col size="12" class="ion-no-padding">
+        <ion-item lines="full">
+          <ion-label class="ion-text-wrap">
+            {{ restaurant.description }}
+          </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </div>
+  <ion-row *ngFor="let plate of finalList" class="ion-justify-content-center ion-padding meal-row" >
+    <ion-col size="8" class="border-bottom">
+      <ion-label>
+        {{ plate.nombre }}
+        <p>Ingredientes: {{plate.ingredients}}</p>
+        <p>{{ plate.description }}</p>
+      </ion-label>
+      <ion-text color="dark"><b>{{ plate.pvp | currency:'EUR' }}</b></ion-text>
+    </ion-col>
+    <ion-col size="3" class="border-bottom">
+      <div class="plate-image" [style.background-image]="'url(' + plate.img + ')'"></div>
+    </ion-col>
+    <ion-row   class="ion-justify-content-center ion-padding">
+      <ion-col size="4" >
+        <ion-button fill="clear" (click)="removeFromCart($event, plate)" [disabled]="!cart[plate.pId] || cart[plate.pId] === 0">
+          <ion-icon name="remove" slot="icon-only" color="tertiary"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size="2" style="margin-left: 10px;">
+        <ion-badge  color="tertiary" style="margin-top:20px" class="counter">
+          {{cart[plate.pId] || 0}}
+        </ion-badge>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button fill="clear" (click)="addToCart($event, plate)" style="margin-right: 5px">
+          <ion-icon name="add" slot="icon-only" color="tertiary"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-row>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openCart(restaurant)" color="secondary" #opCart>
+      <ion-icon name="cart"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

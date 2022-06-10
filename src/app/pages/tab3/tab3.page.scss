@@ -1,0 +1,39 @@
+.meta {
+  position: relative;
+  height: 150px;
+}
+.fallback {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  align-items: center;
+  font-weight: 500;
+  border-radius: 50%;
+  background: #bfbfbf;
+  display: flex;
+  justify-content: center;
+}
+.data{
+  margin: 20px;
+  margin-top:80px;
+}
+.avatarProfile {
+  display: flex;
+  width: 200px;
+  height: 200px;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  margin-top: 10px;
+  margin-left: 25%;
+  font-weight: 500;
+}
+
+.itemButton{
+  margin-top: 10px;
+  height: 30px;
+}
+.newModal{
+  padding: 1px;
+}
+

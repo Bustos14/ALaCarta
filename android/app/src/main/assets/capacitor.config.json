@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "ALaCarta",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

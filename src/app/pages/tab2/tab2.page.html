@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-title>
+            Historial de pedidos
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-row *ngFor="let order of finalList, index as position" class="ion-no-padding meal-row">
+            <ion-col size="4" class="plate-image">
+                <img src="{{order.resId?.img}}">
+            </ion-col>
+                <ion-col size="8" style="margin-top: 20px" class="border-bottom">
+                    <p class="ion-text-center nameRest">{{order.resId?.nameRestaurant}}</p>
+                   <b> {{ order.cantTotal }} artículos - {{order.totalPrice}}€</b>
+                    <br>
+                    {{ order.date }}
+                    <ion-text [color]="getStatusColor(order.status)">{{ order.status}}</ion-text>
+                </ion-col>
+    </ion-row>
+</ion-content>
+

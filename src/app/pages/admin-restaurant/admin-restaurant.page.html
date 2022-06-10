@@ -1,0 +1,72 @@
+<ion-header>
+    <ion-toolbar color="light">
+        <ion-title>{{ profile?.nameRestaurant }}</ion-title>
+        <ion-buttons slot="start">
+            <ion-button fill="solid" shape="round" color="light" (click)="endSession()">
+                <ion-icon color="danger" slot="start" name="log-out"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" scrollEvents="true">
+    <div #img class="header-image" *ngIf="profile?.img; else placholder_local "
+         [style.background-image]="'url(' + profile.img + ')'" (click)="changeImageProfile(profile)">
+    </div>
+    <ng-template #placholder_local>
+        <div class="fallback" (click)="changeImageProfile(profile.nameRestaurant)">
+            <h5>¡Añade una foto!</h5>
+        </div>
+    </ng-template>
+    <div *ngIf="profile">
+        <ion-row>
+            <ion-col size="12" class="light-bg ion-padding">
+                <ion-badge color="danger" (click)="modalEditProfile()">
+                    <ion-icon name="create-outline"></ion-icon>
+                    <ion-text color="dark">Editar perfil</ion-text>
+                </ion-badge>
+            </ion-col>
+            <ion-col size="12" class="light-bg ion-padding-start">
+                <ion-icon name="location-outline" color="medium"></ion-icon>
+                <ion-text>
+                    {{profile.street + ', ' + profile.codPostal + ', ' + profile.city}}
+                </ion-text>
+            </ion-col>
+            <ion-col size="12" class="light-bg">
+                <ion-row class="ion-align-items-center">
+                    <ion-col size="10">
+                        <ion-label>Información del restaurate
+                            <p> {{ profile.description }}</p>
+                        </ion-label>
+                        <ion-buttons slot="end">
+                        </ion-buttons>
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+            <ion-col size="12" class="light-bg ion-padding">
+                <ion-badge color="primary" (click)="openModal()">
+                    <ion-icon name="add-outline"></ion-icon>
+                    <ion-text color="dark">Añadir platos</ion-text>
+                </ion-badge>
+            </ion-col>
+        </ion-row>
+    </div>
+    <ion-row *ngFor="let menu of finalList " class="ion-padding menu-row">
+        <ion-col size="7" class="border-bottom" (click)="showActionSheet(menu)">
+            <ion-label>
+                {{ menu.nombre }}
+                <p>Ingredientes: {{menu.ingredients}}</p>
+                <p>{{ menu.description }}</p>
+            </ion-label>
+         <ion-text color="dark"><b>{{ menu.pvp + '€' }}</b></ion-text>
+        </ion-col>
+        <ion-col size="4" class="border" >
+            <div class="menu-image" *ngIf="menu?.img; else placholder_avatar"
+                 [style.background-image]="'url(' + menu.img + ')'" (click)="changeImage(menu)"></div>
+            <ng-template #placholder_avatar>
+                <div class="fallback" (click)="changeImage(menu)">
+                    <h5>¡Añade una foto!</h5>
+                </div>
+            </ng-template>
+        </ion-col>
+    </ion-row>
+</ion-content>

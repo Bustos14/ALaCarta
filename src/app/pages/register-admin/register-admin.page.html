@@ -1,0 +1,101 @@
+<ion-content color="primary">
+  <form [formGroup]="myForm" autocomplete="off" (ngSubmit)="submit()">
+    <ion-card color="secondary">
+      <button mat-button id="backButton"
+              (click)="back()">
+        <ion-icon id="back" name="arrow-back-outline"></ion-icon>
+        <ion-back-button></ion-back-button>
+      </button>
+      <ion-card-header>
+        <h1 id="title">Datos de inicio de sesión</h1></ion-card-header>
+      <ion-card-content>
+        <ion-item fill="solid" class="ion-margin-bottom">
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput type="text" placeholder="mail@example.com" formControlName="email" id="email">
+            <mat-error *ngIf="hasError('email', 'required') || hasError('email', 'email')">Introduzca un
+              email
+              valido
+            </mat-error>
+          </mat-form-field>
+        </ion-item>
+      </ion-card-content>
+      <ion-card-content>
+        <ion-item fill="solid" class="ion-margin-bottom">
+          <mat-form-field >
+            <mat-label>Contraseña</mat-label>
+            <input matInput type="password" formControlName="password" id="password" [type]="hide? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="f.password.hasError('minlength') ">Mínimo 6 caracteres</mat-error>
+            <mat-error *ngIf="f.password.hasError('required')">Contraseña obligatoria</mat-error>
+          </mat-form-field>
+        </ion-item>
+      </ion-card-content>
+      <ion-card-content>
+        <ion-item fill="solid" class="ion-margin-bottom">
+          <mat-form-field>
+            <mat-label>Confirmar contraseña</mat-label>
+            <input matInput type="password" formControlName="confirmPassword" id="confirmPassword" [type]="hide? 'password' : 'text'">
+            <mat-error *ngIf="f.confirmPassword.hasError('required')">Repita la contraseña</mat-error>
+            <mat-error *ngIf="!f.confirmPassword.hasError('passwordMatching')">No son iguales</mat-error>
+          </mat-form-field>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </form>
+  <form [formGroup]="myRestForm">
+    <ion-card color="secondary">
+      <ion-card-header>
+        <h1>Datos de tu local</h1></ion-card-header>
+      <ion-card-content>
+        <ion-item fill="solid" class="ion-margin-bottom">
+          <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input matInput type="text" formControlName="nameRestaurant" >
+            <mat-error *ngIf="hasError('name', 'required')">Debe introducir un nombre de usuario</mat-error>
+          </mat-form-field>
+        </ion-item>
+      </ion-card-content>
+      <ion-card-content>
+        <ion-item fill="solid" class="ion-margin-bottom">
+          <mat-form-field>
+            <mat-label>Calle</mat-label>
+            <input matInput type="text" formControlName="street">
+          </mat-form-field>
+        </ion-item>
+      </ion-card-content>
+      <ion-card-content>
+        <ion-item fill="solid" class="ion-margin-bottom">
+          <mat-form-field >
+            <mat-label>Ciudad</mat-label>
+            <input matInput formControlName="city">
+          </mat-form-field>
+        </ion-item>
+      </ion-card-content>
+      <ion-card-content>
+        <ion-item fill="solid" class="ion-margin-bottom">
+          <mat-form-field>
+            <mat-label>Código postal</mat-label>
+            <input type="number" matInput formControlName="codPostal">
+          </mat-form-field>
+        </ion-item>
+      </ion-card-content>
+      <ion-card-content>
+        <ion-item fill="solid" class="ion-margin-bottom">
+          <mat-form-field >
+          <mat-label>Añade una descripción</mat-label>
+          <textarea matInput #input maxlength="255" placeholder="Restaurante de comida española ..." formControlName="description"></textarea>
+            <mat-hint align="end">{{input.value?.length || 0}}/255</mat-hint>
+          </mat-form-field>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+    <ion-item color="primary">
+      <button mat-raised-button color="warn" (click)="back()" >Cancelar</button>
+      <button mat-raised-button type="submit" (click)="sregister()" slot="end">Registrarse</button>
+    </ion-item>
+  </form>
+</ion-content>

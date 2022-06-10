@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Historial de pedidos
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row *ngFor="let order of finalList, index as position" class="ion-no-padding meal-row" (click)="showActionSheet(order.order)" >
+    <ion-col size="4" class="plate-image">
+      <img src="{{user[position]?.userImg}}">
+    </ion-col>
+    <ion-col size="8" style="margin-top: 20px" class="border-bottom">
+      <p class="ion-text-center nameRest">{{user[position]?.displayName}}</p>
+      <div *ngFor="let p of order.plate">
+        <b> {{ p.nombre }} - {{p.pvp}}€ x {{p.count}}</b>
+      </div>
+      <b>Total: {{ order.totalPrice}}€</b>
+      <br>
+      {{ order.date}}
+      <ion-text [color]="getStatusColor(order.status)">{{ order.status}}</ion-text>
+    </ion-col>
+  </ion-row>
+</ion-content>

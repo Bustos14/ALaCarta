@@ -1,0 +1,45 @@
+ion-toolbar {
+  ion-icon {
+    font-size: 25px;
+  }
+}
+
+ion-content {
+  position: absolute;
+  --background: #f1f1f1;
+  --padding-bottom: 50px;
+}
+
+.light-bg {
+  background: #ffffff;
+  z-index: 10;
+}
+
+.header-image {
+  background-repeat: no-repeat;
+  background-position:center;
+  background-size: cover;
+  height: 40vh;
+  will-change: transform;
+}
+ion-list-header {
+  --background: #f1f1f1;
+}
+
+.meal-row {
+  padding-bottom: 0;
+  background-color: #fff;
+}
+
+.plate-image {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 5px;
+}
+
+.border-bottom {
+  border-bottom: 1px solid var(--ion-color-step-150, rgba(0, 0, 0, 0.07));
+}

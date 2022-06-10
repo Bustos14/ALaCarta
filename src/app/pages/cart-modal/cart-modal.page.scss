@@ -1,0 +1,16 @@
+.meal-row {
+  padding-bottom: 0;
+  background-color: #fff;
+}
+
+.plate-image {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 5px;
+}
+.border-bottom {
+  border-bottom: 1px solid var(--ion-color-step-150, rgba(0, 0, 0, 0.07));
+}

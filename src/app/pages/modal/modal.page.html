@@ -1,0 +1,28 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-title>Introduzca los datos de su plato</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="myPlateForm" (ngSubmit)="newPlate()">
+    <ion-item fill="solid" class="ion-margin-bottom">
+      <ion-label position="floating" >Nombre del plato</ion-label>
+    <ion-input formControlName="plateName" placeholder="{{platoEdit?.nombre}}"></ion-input>
+  </ion-item>
+    <ion-item fill="solid" class="ion-margin-bottom">
+      <ion-label position="floating" >Ingredientes</ion-label>
+      <ion-input formControlName="ingredients" placeholder="{{platoEdit?.ingredients}}"></ion-input>
+    </ion-item>
+    <ion-item fill="solid" class="ion-margin-bottom">
+      <ion-label position="floating">Introduce una descripción al plato</ion-label>
+      <ion-textarea formControlName="description" placeholder="{{platoEdit?.description}}"></ion-textarea>
+    </ion-item>
+    <ion-item fill="solid" class="ion-margin-bottom">
+      <ion-label position="floating">Precio</ion-label>
+      <ion-input type="number" formControlName="pvp" placeholder="{{platoEdit?.pvp}}"></ion-input>
+    </ion-item>
+    <ion-button (click)="checkingAction()" [disabled]="myPlateForm.invalid" color="primary" expand="full">Guardar</ion-button>
+    <ion-button (click)="cerrarModal()" color="secondary" expand="full">Cancelar</ion-button>
+  </form>
+</ion-content>

@@ -1,0 +1,33 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-title>Introduzca los datos de su local</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="myRestForm">
+        <ion-label>Nombre del local</ion-label>
+        <ion-item fill="solid" class="ion-margin-bottom" >
+            <ion-input formControlName="nameRestaurant" placeholder="{{datosPerfil.nameRestaurant}}"></ion-input>
+        </ion-item>
+        <ion-label>Calle</ion-label>
+        <ion-item fill="solid" class="ion-margin-bottom">
+            <ion-input formControlName="street" placeholder="{{datosPerfil.street}}"></ion-input>
+        </ion-item>
+        <ion-label>Código postal</ion-label>
+        <ion-item fill="solid" class="ion-margin-bottom">
+            <ion-input type="number" formControlName="codPostal" placeholder=" {{datosPerfil.codPostal}}"></ion-input>
+        </ion-item>
+        <ion-label>Ciudad</ion-label>
+        <ion-item fill="solid" class="ion-margin-bottom">
+            <ion-input formControlName="city" placeholder="{{datosPerfil.city}}"></ion-input>
+        </ion-item>
+        <ion-label>Descripción</ion-label>
+        <ion-item fill="solid" class="ion-margin-bottom">
+            <ion-textarea formControlName="description" placeholder="{{datosPerfil.description}}"></ion-textarea>
+        </ion-item>
+        <ion-button color="primary" expand="full" (click)="updateRestaurantData()">Guardar</ion-button>
+        <ion-button (click)="cerrarModal()" color="secondary" expand="full">Cancelar</ion-button>
+    </form>
+
+</ion-content>

@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-toolbar color="tertiary">
+        <ion-buttons slot="end">
+            <ion-button (click)="closeModal()">
+                <ion-icon slot="icon-only" name="close"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Tu carrito</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-row *ngFor="let plate of plateList" class="ion-justify-content-center ion-padding meal-row">
+        <ion-col size="2" style="margin-top: 20px">
+            <p style="font-size: 4.5vw">
+                {{ plate.count }}x
+            </p>
+        </ion-col>
+        <ion-col size="6" class="border-bottom">
+            <ion-label>
+                {{ plate.nombre }}
+                <p>{{ plate.description }}</p>
+            </ion-label>
+            <ion-text color="dark"><b>{{ plate.pvp | currency:'EUR' }}</b></ion-text>
+        </ion-col>
+        <ion-col size="3" class="border-bottom">
+            <div class="plate-image" [style.background-image]="'url(' + plate?.img + ')'"></div>
+        </ion-col>
+    </ion-row>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar color="success">
+        <ion-button (click)=" clickCheckOut(totalPrice, allProductsCount, 'Pendiente', rest, plateList)" expand="full" fill="clear" color="light" [disabled]="!viewCartButton(totalPrice)"><!--(click)="checkout()"-->
+            Pagar : {{totalPrice  | currency: 'EUR'}}
+        </ion-button>
+    </ion-toolbar>
+</ion-footer>

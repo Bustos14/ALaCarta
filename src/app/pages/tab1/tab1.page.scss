@@ -1,0 +1,50 @@
+ion-slides {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.swiper-slide img {
+  width: auto;
+  max-width: 100%;
+  max-height: 300px;
+}
+.featured-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  img {
+    width: 200px;
+    height: 200px;
+    align-items: flex-start;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+ion-content{
+  --padding-top: 40px;
+}
+.sticky-row {
+  position: sticky;
+  top: calc(env(safe-area-inset-top) - 40px);
+  z-index: 2;
+  background: #ffffff;
+  box-shadow: 0px 9px 11px -15px rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+.info-row{
+  background: #ffffff;
+  position: sticky;
+  top: calc(env(safe-area-inset-top) - 40px);
+  z-index: 2;
+}
+ion-refresher{
+  --padding-top:  calc(env(safe-area-inset-top) - 50px)
+}
